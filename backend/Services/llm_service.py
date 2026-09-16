@@ -24,7 +24,7 @@ client = InferenceClient(
 )
 
 
-MODEL_NAME = "ibm-granite/granite-4.2-30b"
+MODEL_NAME = os.getenv("MODEL_NAME")
 
 
 # --------------------------------------------------
