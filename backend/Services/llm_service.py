@@ -1,10 +1,8 @@
 import os
 
 from dotenv import load_dotenv
-from huggingface_hub import InferenceClient
-
-from .prompt_architecture import build_system_prompt
-
+from groq import Groq
+from groq.types.chat import ChatCompletionMessageParam
 
 # --------------------------------------------------
 # Configuration
@@ -12,44 +10,40 @@ from .prompt_architecture import build_system_prompt
 
 load_dotenv()
 
-API_KEY = os.getenv("API_KEY")
+API_KEY = os.getenv("Groq_API_KEY")
 
 if not API_KEY:
-    raise ValueError("API_KEY is not configured.")
+    raise ValueError("Groq_API_KEY is not configured.")
 
 
-client = InferenceClient(
-    token=API_KEY,
-    provider="auto"
+client = Groq(
+    api_key=API_KEY
 )
 
-
-MODEL_NAME = os.getenv("MODEL_NAME")
+MODEL_NAME = os.getenv(
+    "MODEL_NAME",
+    "openai/gpt-oss-20b"
+)
 
 
 # --------------------------------------------------
 # LLM Service
 # --------------------------------------------------
 
-def generate_response(messages: list[dict]) -> str:
+def generate_response(messages: list[ChatCompletionMessageParam]) -> str:
     """
-    Send the prepared conversation context to the LLM
+    Send the prepared conversation context to Groq
     and return the generated response.
     """
 
-    system_message = {
-        "role": "system",
-        "content": build_system_prompt()
-    }
-
-    request_messages = [
-        system_message,
-        *messages
-    ]
-
-    response = client.chat_completion(
+    response = client.chat.completions.create(
         model=MODEL_NAME,
-        messages=request_messages
+        messages=messages,
+        temperature=1,
+        max_completion_tokens=2000,
+        top_p=1,
+        reasoning_effort="medium",
+        stream=False
     )
 
     model_response = response.choices[0].message.content

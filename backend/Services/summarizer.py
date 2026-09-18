@@ -61,7 +61,7 @@ Return only the updated summary.
     # Call LLM
     # ----------------------------------------------
 
-    response = client.chat_completion(
+    response = client.chat.completions.create(
         model=MODEL_NAME,
         messages=[
             {
