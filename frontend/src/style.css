@@ -1,130 +1,394 @@
-/* ================================
-   Global
-================================ */
+/* ==========================================
+   Global Reset
+========================================== */
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html,
 body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
     font-family:
         Inter,
-        system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
 
-    background: #f5f7fb;
-    color: #1f2937;
+    background: #0f1117;
+    color: #ffffff;
 }
 
 
-/* ================================
-   App
-================================ */
+/* ==========================================
+   App Container
+========================================== */
 
 #app {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 }
+
+
+/* ==========================================
+   Authentication
+========================================== */
+
+.auth-app {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 28px 22px;
+
+    background: #181b24;
+
+    border: 1px solid #292d38;
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+
+    animation: authAppear 0.35s ease;
+}
+
+
+/* ==========================================
+   Authentication Header
+========================================== */
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.auth-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    color: #969ba8;
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   Authentication Form
+========================================== */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #d7dae2;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #303541;
+    border-radius: 9px;
+
+    background: #10131a;
+    color: #ffffff;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #666b78;
+}
+
+.form-group input:focus {
+    border-color: #7c5cff;
+
+    box-shadow:
+        0 0 0 3px rgba(124, 92, 255, 0.15);
+}
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper input {
+    padding-right: 48px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 7px;
+
+    background: transparent;
+    color: #969ba8;
+
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.password-toggle:hover,
+.password-toggle:focus-visible {
+    background: #252934;
+    color: #ffffff;
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid #8b72ff;
+    outline-offset: 2px;
+}
+
+.password-toggle svg {
+    width: 18px;
+    height: 18px;
+
+    stroke: currentColor;
+    stroke-width: 1.7;
+}
+
+
+/* ==========================================
+   Authentication Button
+========================================== */
+
+.auth-button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #7c5cff;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+.auth-button:hover {
+    background: #6d4ff0;
+}
+
+.auth-button:active {
+    transform: scale(0.98);
+}
+
+
+/* ==========================================
+   Authentication Error
+========================================== */
+
+.auth-error {
+    min-height: 18px;
+
+    color: #ff6b6b;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   Authentication Switch
+========================================== */
+
+.auth-switch {
+    margin-top: 22px;
+
+    text-align: center;
+
+    color: #969ba8;
+
+    font-size: 14px;
+}
+
+.auth-link {
+    border: none;
+    background: none;
+
+    color: #8b72ff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin-left: 4px;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   Chat Application
+========================================== */
 
 .chat-app {
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
 
-    background: #ffffff;
+    background: #0f1117;
 }
 
 
-/* ================================
-   Header
-================================ */
+/* ==========================================
+   Chat Header
+========================================== */
 
 .chat-header {
+    height: 64px;
+
     flex-shrink: 0;
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    height: 60px;
     padding: 0 16px;
 
-    border-bottom: 1px solid #e5e7eb;
-    background: wheat;
+    border-bottom: 1px solid #292d38;
+
+    background: #141720;
 }
 
 .chat-header h1 {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
-/* ================================
-   Messages
-================================ */
+/* ==========================================
+   Logout Button
+========================================== */
 
-/* ================================
-   Messages
-================================ */
+.logout-button {
+    border: 1px solid #303541;
+
+    border-radius: 8px;
+
+    padding: 7px 11px;
+
+    background: transparent;
+    color: #b8bcc7;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.logout-button:hover {
+    background: #252934;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   Chat Messages
+========================================== */
 
 .chat-messages {
     flex: 1;
+
+    overflow-y: auto;
+
+    padding: 20px 14px;
 
     display: flex;
     flex-direction: column;
 
     gap: 18px;
 
-    padding: 20px 16px;
-
-    overflow-y: auto;
-
     scroll-behavior: smooth;
 }
 
 
-/* ================================
+/* ==========================================
    Message
-================================ */
+========================================== */
 
 .message {
     display: flex;
+
     align-items: flex-start;
-    gap: 9px;
 
-    width: 100%;
+    gap: 10px;
 
-    animation: messageAppear 0.25s ease-out;
+    max-width: 100%;
 }
-
-.assistant-message {
-    justify-content: flex-start;
-}
-
-.user-message {
-    justify-content: flex-end;
-}
-
-
-/* ================================
-   Message Icon
-================================ */
 
 .message-icon {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
 
     flex-shrink: 0;
 
@@ -140,62 +404,198 @@ body {
     height: 18px;
 
     stroke: currentColor;
-    stroke-width: 1.8;
-
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    stroke-width: 1.7;
 }
 
-.assistant-icon {
-    background: #eef2ff;
-    color: #4f46e5;
+
+/* ==========================================
+   User Message
+========================================== */
+
+.user-message {
+    flex-direction: row-reverse;
 }
 
 .user-icon {
-    background: #e5e7eb;
-    color: #374151;
-}
-
-
-/* ================================
-   Message Content
-================================ */
-
-.message-content {
-    max-width: 82%;
-
-    padding: 11px 13px;
-
-    border-radius: 14px;
-
-    font-size: 15px;
-    line-height: 1.5;
-
-    word-wrap: break-word;
-}
-
-.assistant-message .message-content {
-    background: #f1f3f5;
-
-    border-top-left-radius: 5px;
+    background: #292d38;
+    color: #c8ccd6;
 }
 
 .user-message .message-content {
-    background: #4f46e5;
+    background: #7c5cff;
     color: #ffffff;
 
-    border-top-right-radius: 5px;
+    border-radius: 14px 4px 14px 14px;
 }
 
 
-/* ================================
-   Message Animation
-================================ */
+/* ==========================================
+   Assistant Message
+========================================== */
 
-@keyframes messageAppear {
+.assistant-icon {
+    background: #252934;
+    color: #a996ff;
+}
+
+.assistant-message .message-content {
+    background: #181b24;
+    color: #e5e7ed;
+
+    border: 1px solid #292d38;
+
+    border-radius: 4px 14px 14px 14px;
+}
+
+
+/* ==========================================
+   Message Content
+========================================== */
+
+.message-content {
+    max-width: calc(100% - 40px);
+
+    padding: 11px 13px;
+
+    font-size: 14px;
+    line-height: 1.55;
+
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+
+
+/* ==========================================
+   Chat Input
+========================================== */
+
+.chat-input-area {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 12px;
+
+    border-top: 1px solid #292d38;
+
+    background: #141720;
+}
+
+.chat-input-area input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 12px 13px;
+
+    border: 1px solid #303541;
+    border-radius: 9px;
+
+    background: #10131a;
+    color: #ffffff;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.chat-input-area input::placeholder {
+    color: #666b78;
+}
+
+.chat-input-area input:focus {
+    border-color: #7c5cff;
+
+    box-shadow:
+        0 0 0 3px rgba(124, 92, 255, 0.12);
+}
+
+
+/* ==========================================
+   Send Button
+========================================== */
+
+#send-button {
+    flex-shrink: 0;
+
+    padding: 12px 15px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #7c5cff;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+#send-button:hover {
+    background: #6d4ff0;
+}
+
+#send-button:active {
+    transform: scale(0.96);
+}
+
+
+/* ==========================================
+   Thinking Indicator
+========================================== */
+
+.thinking-content {
+    color: #969ba8;
+}
+
+.thinking-dots {
+    display: inline-block;
+
+    width: 18px;
+
+    overflow: hidden;
+
+    vertical-align: bottom;
+
+    animation: thinkingDots 1.2s steps(4, end) infinite;
+}
+
+
+/* ==========================================
+   Scrollbar
+========================================== */
+
+.chat-messages::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #303541;
+    border-radius: 10px;
+}
+
+
+/* ==========================================
+   Animations
+========================================== */
+
+@keyframes authAppear {
+
     from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(10px);
     }
 
     to {
@@ -205,148 +605,8 @@ body {
 }
 
 
-/* ================================
-   Desktop
-================================ */
-
-@media (min-width: 768px) {
-
-    .chat-messages {
-        padding: 24px;
-        gap: 20px;
-    }
-
-    .message-icon {
-        width: 36px;
-        height: 36px;
-    }
-
-    .message-icon svg {
-        width: 20px;
-        height: 20px;
-    }
-
-    .message-content {
-        max-width: 70%;
-
-        padding: 12px 15px;
-    }
-}
-
-
-/* ================================
-   Message
-================================ */
-
-
-
-
-/* ================================
-   Input Area
-================================ */
-
-.chat-input-area {
-    flex-shrink: 0;
-
-    display: flex;
-    gap: 8px;
-
-    padding: 12px 16px;
-
-    border-top: 1px solid #e5e7eb;
-    background: #ffffff;
-}
-
-.chat-input-area input {
-    flex: 1;
-
-    min-width: 0;
-
-    padding: 12px 14px;
-
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-
-    outline: none;
-
-    font-size: 15px;
-}
-
-.chat-input-area input:focus {
-    border-color: #6366f1;
-}
-
-.chat-input-area button {
-    flex-shrink: 0;
-
-    padding: 0 16px;
-
-    border: none;
-    border-radius: 10px;
-
-    background: #6366f1;
-    color: #ffffff;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    cursor: pointer;
-}
-
-.chat-input-area button:active {
-    transform: scale(0.98);
-}
-
-
-/* ================================
-   Tablet / Desktop
-================================ */
-
-@media (min-width: 768px) {
-
-    .chat-header {
-        height: 64px;
-        padding: 0 24px;
-    }
-
-    .chat-header h1 {
-        font-size: 20px;
-    }
-
-    .chat-messages {
-        padding: 24px;
-    }
-
-    .message-content {
-        max-width: 70%;
-    }
-
-    .chat-input-area {
-        padding: 16px 24px;
-    }
-
-}
-
-
-/* ================================
-   Thinking Indicator
-================================ */
-
-.thinking-content {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-}
-
-.thinking-dots {
-    display: inline-block;
-    min-width: 18px;
-    overflow: hidden;
-
-    animation: thinkingDots 1.4s infinite;
-}
-
 @keyframes thinkingDots {
+
     0% {
         width: 0;
     }
@@ -365,30 +625,299 @@ body {
 }
 
 
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (min-width: 600px) {
+
+    .auth-card {
+        padding: 34px 30px;
+    }
+
+    .chat-messages {
+        padding: 24px 20px;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+
+    .message-content {
+        max-width: 700px;
+    }
+
+    .chat-input-area {
+        padding: 12px 20px;
+    }
+}
+
+
+/* ==========================================
+   Desktop
+========================================== */
+
+@media (min-width: 900px) {
+
+    .chat-header {
+        padding: 0 28px;
+    }
+
+    .chat-header h1 {
+        font-size: 20px;
+    }
+
+    .chat-messages {
+        padding: 30px;
+        gap: 20px;
+    }
+
+    .message {
+        max-width: 75%;
+    }
+
+    .chat-input-area {
+        padding: 14px 30px;
+    }
+
+    .chat-input-area input {
+        font-size: 15px;
+    }
+}
+
+
+/* ==========================================
+   Large Desktop
+========================================== */
+
+@media (min-width: 1200px) {
+
+    .chat-messages {
+        padding-left: max(30px, calc((100vw - 1000px) / 2));
+        padding-right: max(30px, calc((100vw - 1000px) / 2));
+    }
+
+    .chat-input-area {
+        padding-left: max(30px, calc((100vw - 1000px) / 2));
+        padding-right: max(30px, calc((100vw - 1000px) / 2));
+    }
+}
 
 
 
 
 
 
+/* ==========================================
+   Landing Page
+========================================== */
+
+.landing-app {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+}
+
+.landing-content {
+    width: 100%;
+    max-width: 520px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    animation: landingAppear 0.5s ease;
+}
+
+
+/* ==========================================
+   Landing Brand
+========================================== */
+
+.landing-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.landing-icon {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #181b24;
+
+    border: 1px solid #292d38;
+
+    color: #a996ff;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.landing-icon svg {
+    width: 34px;
+    height: 34px;
+
+    stroke: currentColor;
+    stroke-width: 1.6;
+}
+
+.landing-brand h1 {
+    font-size: 28px;
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* ==========================================
+   Landing Description
+========================================== */
+
+.landing-description {
+    max-width: 400px;
+
+    margin-top: 18px;
+
+    color: #969ba8;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
 
 
 
 
 
+/* ==========================================
+   Authentication Back Button
+========================================== */
+
+.auth-back-button {
+    display: block;
+
+    margin: 16px auto 0;
+
+    border: none;
+    background: transparent;
+
+    color: #969ba8;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.auth-back-button:hover {
+    color: #ffffff;
+}
+
+.auth-back-button:active {
+    transform: translateX(-2px);
+}
 
 
 
+/* ==========================================
+   Ask AI Button
+========================================== */
+
+.ask-ai-button {
+    margin-top: 30px;
+
+    min-width: 150px;
+
+    padding: 13px 24px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #7c5cff;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(124, 92, 255, 0.2);
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.ask-ai-button:hover {
+    background: #6d4ff0;
+
+    box-shadow:
+        0 10px 30px rgba(124, 92, 255, 0.3);
+}
+
+.ask-ai-button:active {
+    transform: scale(0.97);
+}
 
 
-@media (prefers-reduced-motion: reduce) {
+/* ==========================================
+   Landing Animation
+========================================== */
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+@keyframes landingAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==========================================
+   Landing - Desktop
+========================================== */
+
+@media (min-width: 600px) {
+
+    .landing-brand h1 {
+        font-size: 34px;
+    }
+
+    .landing-description {
+        font-size: 16px;
+    }
+
+    .landing-icon {
+        width: 72px;
+        height: 72px;
+    }
+
+    .landing-icon svg {
+        width: 38px;
+        height: 38px;
     }
 }
