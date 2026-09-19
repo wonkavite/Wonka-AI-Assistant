@@ -160,7 +160,7 @@ export function showThinkingIndicator(): void {
         </div>
 
         <div class="message-content thinking-content">
-            Thinking<span class="thinking-dots">...</span>
+            Wonka is Thinking<span class="thinking-dots">...</span>
         </div>
     `;
 

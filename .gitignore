@@ -27,6 +27,7 @@ frontend/dist/
 # OS
 .DS_Store
 Thumbs.db
-
+.env.example
 # Test files
 test.py
+DEPLOYMENT_INSPECTION_REPORT.md
